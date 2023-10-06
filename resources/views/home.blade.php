@@ -23,11 +23,11 @@
     </section> --}}
 
     <section class="container text-center mt-5 mb-4" id="blogs">
-        <h1 class="display-5 fw-bold mb-4"><span class="text-primary">Blogs</span> & Trips</h1>
+        <h1 class="display-5 fw-bold mb-4 text-white"><span class="text-success">Blogs</span> & Something</h1>
         
         <div class="mb-4">
-            <select name="" id="" class="p-1 rounded-pill">
-                <option value="">Filter by Category</option>
+            <select name="" id="" class="p-1 rounded-pill" onchange="location.href=">
+                <option value="">Example link</option>
             </select>
             <select name="" id="" class="p-1 rounded-pill mx-3">
                 <option value="">Filter by Tag</option>
@@ -36,7 +36,7 @@
         <form action="" class="my-3 mb-5 col-7 mx-auto">
             <div class="input-group mb-3">
                 <input type="text" autocomplete="false" class="form-control" placeholder="Search Blogs..." />
-                <button class="input-group-text bg-primary text-light" id="basic-addon2" type="submit">
+                <button class="input-group-text bg-success text-light" id="basic-addon2" type="submit">
                     Search
                 </button>
             </div>

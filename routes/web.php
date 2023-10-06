@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/blogs/{blog:slug}', function (Blog $blog) { //route model 
     return view('blog', [
-        'blog' => $blog
+        'blog' => $blog,
+        'randomBlogs' => Blog::inRandomOrder()->take(3)->get()
     ]);
 });
 

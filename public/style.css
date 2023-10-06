@@ -1,3 +1,27 @@
-a {
-    text-decoration: none !important;
+body {
+    background: linear-gradient(to right bottom, #00100f, #000807) !important; 
 }
+
+.blogs {
+    background: transparent !important;
+    border: 1px solid rgb(0 239 211 /1)  !important;
+    border-radius: 20px  !important;
+}
+.blog-img {
+    border-radius: 10px !important;
+    filter: brightness(89%) blur(.5px);
+    height: 260px;
+
+    object-fit: cover;
+}
+
+.my-blog-img {
+    height: 360px !important;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+.footer, .navbar {
+    background: #000000 !important;
+}
+
