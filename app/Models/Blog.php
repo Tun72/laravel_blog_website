@@ -23,9 +23,16 @@ class Blog extends Model
         if ($search = $filters["search"] ?? null) {
             $blogQuery->where("title", "LIKE", "%" . $search . "%")->orWhere("intro", "LIKE", "%" . $search . "%");
         }
-        if($category = $filters["search"] ?? null) {
-            $blogQuery->whereHas("category", function($catQuery) use($category) {
+        if($category = $filters["category"] ?? null) {
+           
+            $blogQuery = $blogQuery->whereHas("category", function($catQuery) use($category) {
+                
                   $catQuery->where("slug", $category);
+            });
+        }
+        if($author =  $filters['username'] ?? null) {
+            $blogQuery->whereHas("user", function($authorQuery) use ($author) {
+                $authorQuery->where("username", $author); 
             });
         }
 

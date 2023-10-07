@@ -22,17 +22,10 @@
         </div>
     </section> --}}
 
-    <section class="container text-center mt-5 mb-4" id="blogs">
-        <h1 class="display-5 fw-bold mb-4 text-white"><span class="text-success">Blogs</span> & Something</h1>
+    <section class="mt-5 mb-4 col-10 mx-auto container" id="blogs">
+        <h1 class="display-5 fw-bold mb-4 text-white text-center"><span class="text-success">Blogs</span> & Something</h1>
+        <x-categories :categories="$category" />
         
-        <div class="mb-4">
-            <select name="" id="" class="p-1 rounded-pill" onchange="location.href=">
-                <option value="">Example link</option>
-            </select>
-            <select name="" id="" class="p-1 rounded-pill mx-3">
-                <option value="">Filter by Tag</option>
-            </select>
-        </div>
         <form action="/" method="GET" class="my-3 mb-5 col-7 mx-auto">
             <div class="input-group mb-3">
                 <input type="text" autocomplete="false" class="form-control" name="search" value="{{ request('search') }}" placeholder="Search Blogs..." />

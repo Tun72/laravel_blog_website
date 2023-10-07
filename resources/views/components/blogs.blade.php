@@ -67,4 +67,12 @@
 
         
 </div>
-{{$blogs->links()}}
+
+@if($blogs instanceof \Illuminate\Pagination\AbstractPaginator)
+
+   {{$blogs->links()}}
+
+@endif
+
+
+
