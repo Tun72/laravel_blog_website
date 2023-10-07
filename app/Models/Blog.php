@@ -18,6 +18,19 @@ class Blog extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function scopeFilter($blogQuery, $filters) {
+        if ($search = $filters["search"] ?? null) {
+            $blogQuery->where("title", "LIKE", "%" . $search . "%")->orWhere("intro", "LIKE", "%" . $search . "%");
+        }
+        if($category = $filters["search"] ?? null) {
+            $blogQuery->whereHas("category", function($catQuery) use($category) {
+                  $catQuery->where("slug", $category);
+            });
+        }
+
+        // return $blogQuery;
+    }
 }
 
 // a user many blog

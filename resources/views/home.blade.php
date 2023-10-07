@@ -33,9 +33,9 @@
                 <option value="">Filter by Tag</option>
             </select>
         </div>
-        <form action="" class="my-3 mb-5 col-7 mx-auto">
+        <form action="/" method="GET" class="my-3 mb-5 col-7 mx-auto">
             <div class="input-group mb-3">
-                <input type="text" autocomplete="false" class="form-control" placeholder="Search Blogs..." />
+                <input type="text" autocomplete="false" class="form-control" name="search" value="{{ request('search') }}" placeholder="Search Blogs..." />
                 <button class="input-group-text bg-success text-light" id="basic-addon2" type="submit">
                     Search
                 </button>
