@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 use App\Models\Category;
@@ -9,6 +10,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BlogController::class, "getBlogs"]);
 
 Route::get('/blogs/{blog:slug}', [BlogController::class, "show"]);
+
+
+// Auth 
+
+Route::get("/login", [AuthController::class, "getLoginForm"]);
+Route::get("/register", [AuthController::class, "getSignUpForm"]);
+
 
 // Route::get("/categories/{category:slug}", function(Category $category) {
 //     return view(('home'), [
