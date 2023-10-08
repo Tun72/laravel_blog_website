@@ -21,7 +21,9 @@ class Blog extends Model
 
     public function scopeFilter($blogQuery, $filters) {
         if ($search = $filters["search"] ?? null) {
-            $blogQuery->where("title", "LIKE", "%" . $search . "%")->orWhere("intro", "LIKE", "%" . $search . "%");
+            $blogQuery->where(function ($blogQuery) use($search) {
+                $blogQuery->where("title", "LIKE", "%" . $search . "%")->orWhere("intro", "LIKE", "%" . $search . "%");
+            });
         }
         if($category = $filters["category"] ?? null) {
            
@@ -30,7 +32,7 @@ class Blog extends Model
                   $catQuery->where("slug", $category);
             });
         }
-        if($author =  $filters['username'] ?? null) {
+        if($author =  $filters['author'] ?? null) {
             $blogQuery->whereHas("user", function($authorQuery) use ($author) {
                 $authorQuery->where("username", $author); 
             });

@@ -17,7 +17,9 @@
  
    <div class="container mt-5 mb-5">
     <h3 class="text-success mb-2">Blogs You May Like</h3>
-    <x-blogs :blogs="$randomBlogs" />
+    <div class="row">
+        <x-blogs-card :blogs="$randomBlogs" />
+    </div>
    </div>
 
 </x-layout>

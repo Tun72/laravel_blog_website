@@ -24,10 +24,18 @@
 
     <section class="mt-5 mb-4 col-10 mx-auto container" id="blogs">
         <h1 class="display-5 fw-bold mb-4 text-white text-center"><span class="text-success">Blogs</span> & Something</h1>
-        <x-categories :categories="$category" />
+        <x-category />
         
         <form action="/" method="GET" class="my-3 mb-5 col-7 mx-auto">
             <div class="input-group mb-3">
+                @if(request('author'))
+                  <input type="hidden" name="author" value="{{ request('author')}}" />
+                @endif
+
+                @if(request('category'))
+                  <input type="hidden" name="category" value="{{ request('category')}}" />
+                @endif
+               
                 <input type="text" autocomplete="false" class="form-control" name="search" value="{{ request('search') }}" placeholder="Search Blogs..." />
                 <button class="input-group-text bg-success text-light" id="basic-addon2" type="submit">
                     Search
@@ -35,7 +43,17 @@
             </div>
         </form>
         
-        <x-blogs :blogs="$blogs" />
+        <div class="row">
+
+            <x-blogs-card :blogs="$blogs"/>
+        
+        </div>
+        
+        {{-- @if($blogs instanceof \Illuminate\Pagination\AbstractPaginator) --}}
+        
+           {{$blogs->links()}}
+        
+        {{-- @endif --}}
         
     </section>
 

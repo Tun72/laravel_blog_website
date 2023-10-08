@@ -10,9 +10,16 @@ class BlogController extends Controller
 {
     public function getBlogs()
     {
-        return view('home', [
-            'blogs' =>  Blog::with(["user", "category"])->filter(request(["search", "category"]))->latest()->paginate(10),
-            'category' => Category::all() //all() other must use get()
+        return view('blogs.index', [
+            'blogs' =>  Blog::with(["user", "category" ])->filter(request(["search", "category", "author"]))->latest()->paginate(9)->withQueryString(),
+             //all() other must use get()
+        ]);
+    }
+
+    public function show(Blog $blog) {
+        return view('blogs.show', [
+            'blog' => $blog,
+            'randomBlogs' => Blog::with(["user", "category" ])->inRandomOrder()->take(3)->get()
         ]);
     }
 }

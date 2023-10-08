@@ -5,7 +5,7 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             @foreach($categories as $cat)
-              <li><a class="dropdown-item" href="/categories/{{$cat->slug}}">{{ $cat->name }}</a></li>
+              <li><a class="dropdown-item" href="/?category={{$cat->slug}} {{ request('author') ? "&author=" . request("author") : ""}} {{ request('search') ? "&search=" . request("search") : "" }}">{{ $cat->name }}</a></li>
             @endforeach
           
         </ul>
