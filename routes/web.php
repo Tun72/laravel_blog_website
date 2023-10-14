@@ -8,14 +8,15 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, "getBlogs"]);
-
 Route::get('/blogs/{blog:slug}', [BlogController::class, "show"]);
 
 
 // Auth 
-
 Route::get("/login", [AuthController::class, "getLoginForm"]);
 Route::get("/register", [AuthController::class, "getSignUpForm"]);
+
+Route::post("/login", [AuthController::class, "login"]);
+Route::post("/register", [AuthController::class, "register"]);
 
 
 // Route::get("/categories/{category:slug}", function(Category $category) {

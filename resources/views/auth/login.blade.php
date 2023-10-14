@@ -2,13 +2,22 @@
 <x-layout>
     <section class="login mx-auto">
 
-        <form class="my-form">
+        <form class="my-form" method="POST" action="/login">
+            @csrf
             <h4 class="text-center text-white">Welcome Back 😍</h4>
             <div class="form-group">
-                <input type="email" placeholder="Email" class="form-control"  name="email">
+                <input type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}">
+                @error('email')
+                    <p class="text-danger error-message">*{{ $message }}</p>
+                @enderror
+
+                
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Password" class="form-control" name="password">
+                <input type="password" placeholder="Password" class="form-control" name="password">\
+                @error('password')
+                    <p class="text-danger error-message">*{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-check d-flex justify-content-center">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
@@ -40,7 +49,7 @@
                 </button>
             </div>
             <div class="text-center">
-               
+
                 <span class="text-white other-login">New user ? <a href="/register">Sign up</a></span><br>
                 <span class="text-white other-login">forgot password ? <a href="#">Reset password</a></span>
             </div>
@@ -49,11 +58,11 @@
         <div class="background-image">
             <div>
                 <h3>Login </h3>
-                <p>“Try not to become a man of success, but rather become a man of value.” <span>-Albert Einstein</span> 
+                <p>“Try not to become a man of success, but rather become a man of value.” <span>-Albert Einstein</span>
                 </p>
             </div>
         </div>
-        
+
 
     </section>
 </x-layout>

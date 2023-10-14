@@ -1,19 +1,38 @@
 <x-layout>
     <section class="login mx-auto">
 
-        <form class="my-form">
+        <form class="my-form" action="register" method="POST">
+            @csrf
             <h4 class="text-center text-white">Sign Up 👽</h4>
             <div class="form-group">
-                <input type="text" placeholder="Name" class="form-control" name="name">
+                <input type="text" placeholder="Name" class="form-control" name="name" value="{{ old('name') }}">
+                @error('name')
+                    <p class="text-danger error-message">*{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="form-group">
-                <input type="email" placeholder="Email" class="form-control" name="email">
+                <input type="text" placeholder="Username" class="form-control" name="username"
+                    value="{{ old('username') }}">
+                @error('username')
+                    <p class="text-danger error-message">*{{ $message }}</p>
+                @enderror
             </div>
-            
-        
+
+            <div class="form-group">
+                <input type="email" placeholder="Email" class="form-control" name="email"
+                    value="{{ old('email') }}">
+                @error('email')
+                    <p class="text-danger error-message">*{{ $message }}</p>
+                @enderror
+            </div>
+
+
             <div class="form-group">
                 <input type="password" placeholder="Password" class="form-control" name="password">
+                @error('password')
+                    <p class="text-danger error-message">*{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-check d-flex justify-content-center">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
@@ -44,19 +63,20 @@
                     <i class="fab fa-github"></i>
                 </button>
             </div>
-            <div class="text-center"> 
-                <span class="text-white other-login">Alreadly have account ? <a href="/login">Log In Here </a></span><br>
+            <div class="text-center">
+                <span class="text-white other-login">Alreadly have account ? <a href="/login">Log In Here
+                    </a></span><br>
             </div>
 
         </form>
         <div class="background-image">
             <div>
                 <h3>Login </h3>
-                <p>“Try not to become a man of success, but rather become a man of value.” <span>-Albert Einstein</span> 
+                <p>“Try not to become a man of success, but rather become a man of value.” <span>-Albert Einstein</span>
                 </p>
             </div>
         </div>
-        
+
 
     </section>
 </x-layout>
