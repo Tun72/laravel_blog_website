@@ -43,13 +43,14 @@ body {
 
 .login {
     margin-top: 10vh;
-    height: 100vh;
+    height: 70vh;
     width: 60%;
     position: relative;
+    margin-bottom: 10vh;
 }
 
 .background-image {
-    height: 80%;
+    height: 100%;
     width: 60%;
     background: linear-gradient(to right bottom, #3333334c, #256d1192),
         url("https://wallpapers.com/images/featured/simple-clean-8g9017acqfddycrl.jpg");
@@ -107,9 +108,9 @@ body {
     gap: 20px;
     position: absolute;
     z-index: 2;
-    top: 4%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-100%);
+    transform: translateX(-100%) translateY(-50%);
 }
 
 .other-login {
