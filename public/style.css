@@ -12,11 +12,9 @@ body {
 }
 
 .blogs:hover {
-    box-shadow: 0 60px 80px rgba(17, 89, 66, 0.22),
-        0 45px 26px rgba(10, 99, 131, 0.18);
-    box-shadow: 0px -25px 20px -20px rgba(17, 89, 66, 0.22),
-        0px 25px 20px -20px rgba(17, 89, 66, 0.22),
-        -25px 0 20px -20px rgba(17, 89, 66, 0.22);
+    box-shadow: -15px -56px 158px 64px rgba(34,51,153,0.29);
+-webkit-box-shadow: -15px -56px 158px 64px rgba(34,51,153,0.29);
+-moz-box-shadow: -15px -56px 158px 64px rgba(34,51,153,0.29);
 }
 .blog-img {
     border-radius: 10px !important;
@@ -71,17 +69,17 @@ body {
 
 .background-image div {
     width: 50%;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-40%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
 }
 .background-image div h4 {
     font-size: 30px;
 
     letter-spacing: 1px;
     align-items: center;
-} 
+}
 .background-image div p {
     letter-spacing: 1px;
     font-style: italic;

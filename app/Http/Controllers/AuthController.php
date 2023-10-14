@@ -37,13 +37,13 @@ class AuthController extends Controller
 
         auth()->login($user);
 
-        return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user());
+        return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user()->name);
     }
 
     public function login()
     {
         
-        $cleanData =  request()->validate([
+        request()->validate([
             "email" => ["required", "max:20"],
             "password" => ["required", "min:8"]
         ]);
@@ -63,5 +63,10 @@ class AuthController extends Controller
 
     
         
+    }
+
+    public function logout() {
+        auth()->logout();
+        return redirect("/")->with("success", "SuccessFully logout!");    
     }
 }
