@@ -4,6 +4,9 @@
 
         <form class="my-form" method="POST" action="/login">
             @csrf
+            @error("error")
+                <p class="alert alert-danger" role="alert">*{{ $message }}</p>
+            @enderror
             <h4 class="text-center text-white">Welcome Back 😍</h4>
             <div class="form-group">
                 <input type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}">

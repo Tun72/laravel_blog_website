@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    //
 
     public function getLoginForm()
     {
@@ -23,10 +22,9 @@ class AuthController extends Controller
 
     public function register()
     {
-        // dd(request()->all());
         $cleanData =  request()->validate([
             "name" => ["required", "max:20"],
-            "username" => ["required", "max:20", Rule::unique("users", "username") ],
+            "username" => ["required", "max:20", Rule::unique("users", "username")],
             "email" => ["required", "max:20", Rule::unique("users", "email")],
             "password" => ["required", "min:8"]
         ], [
@@ -37,31 +35,52 @@ class AuthController extends Controller
 
         auth()->login($user);
 
-        return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user());
+        return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user()->name);
     }
 
     public function login()
     {
-        
-        $cleanData =  request()->validate([
-            "email" => ["required", "max:20"],
+        request()->validate([
+            "email" => ["required", Rule::exists("users", "email")],
             "password" => ["required", "min:8"]
         ]);
 
-        $user = User::where("email", request("email"))->first();
-      
-        if($user) {
-            if(Hash::check(request("password"), $user->password)) {
-                auth()->login($user);
-                return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user()->name);
-            } else {
-                return redirect("/login")->withErrors(["password" => "your passsword is wrong"]);
-            }
+        if (auth()->attempt([
+            "email" => request("email"),
+            "password" =>  request("password"),
+        ])) {
+            return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user()->name);
         } else {
-            return redirect("/login")->withErrors(["email" => "email does not exit"]);
+            return redirect("/login")->withErrors(["email" => "email does not exit"])->withInput();
         }
-
-    
-        
     }
+
+
+    // public function login()
+    // {
+
+    //     request()->validate([
+    //         "email" => ["required", "max:20"],
+    //         "password" => ["required", "min:8"]
+    //     ]);
+
+    //     $user = User::where("email", request("email"))->first();
+
+    //     if($user) {
+    //         if(Hash::check(request("password"), $user->password)) {
+    //             auth()->login($user);
+    //             return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user()->name);
+    //         } else {
+    //             return redirect("/login")->withErrors(["password" => "your passsword is wrong"]);
+    //         }
+    //     } else {
+    //         return redirect("/login")->withErrors(["email" => "email does not exit"]);
+    //     }
+    // }
+
+    public function logout() {
+        auth()->logout();
+        return redirect("/")->with("success", "SuccessFully logout!");    
+    }
+
 }
