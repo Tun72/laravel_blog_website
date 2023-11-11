@@ -52,6 +52,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::get("/login", [AuthController::class, "getLoginForm"]);
 Route::get("/register", [AuthController::class, "getSignUpForm"]);
 
+Route::patch("/register", [AuthController::class, "getSignUpForm"]);
+
+
 Route::post("/login", [AuthController::class, "login"]);
 Route::post("/register", [AuthController::class, "register"]);
 Route::post("/logout", [AuthController::class, "logout"]);
