@@ -1,7 +1,7 @@
 @forelse ($blogs as $blog)
 <div class="col-md-4 mb-4 ">
     <div class="card blogs p-3">
-        <img src="https://creativecoder.s3.ap-southeast-1.amazonaws.com/blogs/GOLwpsybfhxH0DW8O6tRvpm4jCR6MZvDtGOFgjq0.jpg"
+        <img src="{{ $blog->photo}}"
             class="card-img-top blog-img" alt="..." />
         <div class="card-body">
             <h3 class="card-title fs-4 text-white">

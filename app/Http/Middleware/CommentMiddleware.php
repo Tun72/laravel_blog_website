@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class CommentMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,8 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check() || !auth()->user()->admin) {
-            return redirect('/login')->withErrors(["error" => "Please Login With Admin"]);
+        if(!request("body")) {
+            return back()->with("error", "Failed Updated !");
         }
         return $next($request);
     }

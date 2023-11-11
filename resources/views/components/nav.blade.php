@@ -5,6 +5,7 @@
             <a href="/" class="nav-link  text-white">Home</a>
             <a href="/" class="nav-link text-white">Blogs</a>
             <a href="/" class="nav-link text-white">Subscribe</a>
+            <a href="/" class="nav-link text-white">About</a>
 
         </div>
         @if (!auth()->check())
@@ -15,6 +16,9 @@
         @else
             <div class="ml-auto d-flex gap-4 ">
                 <a href="/" class="text-success align-self-center">{{ auth()->user()->name }}</a>
+                @if(auth()->user()->admin)
+                <a href="/admin" class="text-success align-self-center">dashboard</a>
+                @endif
                 <form method="post" action="/logout">
                     @csrf
                     <button type="submit" class="btn btn-outline-success">Logout</button>

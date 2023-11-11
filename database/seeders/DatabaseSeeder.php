@@ -1,7 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,8 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-      
-        Blog::factory(100)->create();
+
+        USer::factory()->create([
+            "email" => "admin@gmail.com",
+            "password" => "admin1234",
+            "admin" => 1
+
+        ]);
+        Blog::factory(10)->has(Comment::factory()->count(3))->create();
 
 
         // \App\Models\User::factory()->create([
@@ -25,4 +33,4 @@ class DatabaseSeeder extends Seeder
     }
 
     // "App\Model\Blog" === Blog::classPw
- }
+}

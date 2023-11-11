@@ -51,7 +51,7 @@ class AuthController extends Controller
         ])) {
             return redirect("/")->with("success", "Welcome from Blogs Website " . auth()->user()->name);
         } else {
-            return redirect("/login")->withErrors(["email" => "email does not exit"])->withInput();
+            return redirect("/login")->withErrors(["error" => "Authantication Fail"])->withInput();
         }
     }
 
