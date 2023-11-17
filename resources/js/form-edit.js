@@ -8,7 +8,7 @@ let isOpen = false;
 let id = "";
 
 
-userComment.addEventListener("click", function (e) {
+userComment?.addEventListener("click", function (e) {
     if (e.target.closest(".edit-blog")) {
         handelElements(e);
     }

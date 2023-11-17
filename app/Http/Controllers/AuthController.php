@@ -40,14 +40,8 @@ class AuthController extends Controller
 
     public function login()
     {
-<<<<<<< HEAD
         request()->validate([
             "email" => ["required", Rule::exists("users", "email")],
-=======
-        
-        request()->validate([
-            "email" => ["required", "max:20"],
->>>>>>> 803ec328b54f94f64d8a37324f419e6b7f51516c
             "password" => ["required", "min:8"]
         ]);
 
@@ -61,7 +55,6 @@ class AuthController extends Controller
         }
     }
 
-<<<<<<< HEAD
 
     // public function login()
     // {
@@ -85,14 +78,8 @@ class AuthController extends Controller
     //     }
     // }
 
-=======
->>>>>>> 803ec328b54f94f64d8a37324f419e6b7f51516c
     public function logout() {
         auth()->logout();
         return redirect("/")->with("success", "SuccessFully logout!");    
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 803ec328b54f94f64d8a37324f419e6b7f51516c
 }

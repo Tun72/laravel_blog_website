@@ -13,4 +13,4 @@
       </ul>
       <p class="text-center">&copy; 2023 Blogs By creativecoder, Inc</p>
     </footer>
-  </div>
+</div>

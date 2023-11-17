@@ -1,5 +1,5 @@
 import "./bootstrap";
-// import "./form-edit";
+import "./form-edit";
 import "tinymce/tinymce";
 import "tinymce/skins/ui/oxide/skin.min.css";
 import "tinymce/skins/content/default/content.min.css";
@@ -12,7 +12,13 @@ window.addEventListener("DOMContentLoaded", () => {
     tinymce.init({
         selector: "#mytextarea"
     });
+
+    tinymce.init({
+        selector: "#mycomment"
+    });
 });
+
+
 
 // stripe
 // laracast cashier

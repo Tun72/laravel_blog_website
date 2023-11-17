@@ -3,8 +3,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\subscribeController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AuthMiddleware;
 use App\Mail\subscriberMail;
@@ -32,10 +34,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [BlogController::class, "getBlogs"])->middleware('auth');
-Route::get('/blogs/{blog:slug}', [BlogController::class, "show"])->middleware(["auth", "isAdmin"]);
+Route::get('/blogs/{blog:slug}', [BlogController::class, "show"])->middleware(["auth", "seen"]);
 
 // admin
-Route::middleware([AdminMiddleware::class])->group(function () {
+Route::middleware([AdminMiddleware::class, AuthMiddleware::class])->group(function () {
     Route::get("/admin", [AdminController::class, "index"]);
     Route::get("/blog/blog-create", [BlogController::class, "create"]);
 
@@ -45,6 +47,25 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get("/blog/{blog}/blog-update", [BlogController::class, "edit"])->can("edit", 'blog');
     // ->can("blog-action", "blog");
     Route::patch("/blog/{blog}/blog-update", [BlogController::class, "update"]);
+
+
+    // categoory
+
+    Route::get("/blog/categories", [CategoryController::class, "index"]);
+    Route::get("/category/store", [CategoryController::class, "store"]);
+
+    Route::post("/category/store", [CategoryController::class, "insert"]);
+
+    Route::get("/category/{category:id}/update", [CategoryController::class, "edit"]);
+    Route::patch("/category/{category:id}/update", [CategoryController::class, "update"]);
+
+    Route::delete("/category/{category:id}/delete", [CategoryController::class, "destory"]);
+
+    // users
+    Route::get("/users", [UserController::class, "all"]);
+    Route::patch("/users/{user:id}/set-to-admin", [UserController::class, "setToAdmin"]);
+    Route::delete("/users/{user:id}/delete-user", [UserController::class, "delete"]);
+    
 });
 
 
@@ -66,9 +87,19 @@ Route::post("/blogs/{blog:slug}/subscribe", [subscribeController::class, "handel
 // comment
 Route::middleware(AuthMiddleware::class)->group(function () {
     Route::post("/blogs/{blog:slug}/comments", [CommentController::class, "store"]);
-    Route::post("/comments/{comment:id}/update", [CommentController::class, "update"])->middleware("comment");
-    Route::post("/comments/{comment:id}/delete", [CommentController::class, "delete"]);
+    Route::post("/comments/{comment:id}/update", [CommentController::class, "update"])->middleware("comment")->can("user-comment", 'comment');
+    Route::post("/comments/{comment:id}/delete", [CommentController::class, "delete"])->can("user-comment", 'comment');
+
+
+    //user
+   
+    Route::get("/user/profile", [UserController::class, "index"]);
+    Route::get("/user/edit", [UserController::class, "edit"]);
+    Route::patch("/user/edit", [UserController::class, "update"]);
+    Route::delete("/user/delete", [UserController::class, "destory"]);
 });
+
+
 
 
 

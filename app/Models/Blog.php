@@ -42,6 +42,11 @@ class Blog extends Model
         return $this->belongsToMany(User::class, "user_blog"); // if (User::class, blogs_users)
     }
 
+    public function getSubscribers() {
+        return $this->subscribers->filter(fn($user) => $user->id != auth()->user()->id);
+    }
+
+
 
     public function scopeFilter($blogQuery, $filters)
     {

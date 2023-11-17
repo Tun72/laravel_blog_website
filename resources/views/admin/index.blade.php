@@ -1,6 +1,5 @@
 <x-admin-layout>
-    <h4 class="text-white">Blogs</h4>
-    <table class="table text-white">
+    <table class="table table-striped table-dark">
         <thead>
             <tr>
                 <th scope="col">id</th>
@@ -15,7 +14,7 @@
                 <tr>
                     <td>{{ $blog->id }}</td>
                     <td>{{ $blog->title }}</td>
-                    <td>{{ $blog->category->name }}</td>
+                    <td>{{ $blog->category ? $blog->category->name : "null"}}</td>
                     <td>{{ $blog->created_at->format('D M Y') }}</td>
                     <td>
                         {{-- @if (auth()->user()->can('blog-action', $blog)) --}}
@@ -36,7 +35,12 @@
                 </tr>
             @endforeach
 
-        </tbody>
+        </tbody> 
     </table>
     {{ $blogs->links() }}
 </x-admin-layout>
+
+
+
+{{-- 
+        --}}

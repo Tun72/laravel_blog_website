@@ -40,7 +40,7 @@
 <body>
     <div>
         <h2>Hello, {{ $name }} </h2>
-        <p>Your subscribed blogs have updates. check out <a href="{{ asset("/blogs/" . {{$blog->slug}} )}}">here</a></p>
+        <p>Your subscribed blogs have updates. check out <a href="{{  asset("/blogs/" . $blog->slug) }}">here</a></p>
     </div>
 </body>
 

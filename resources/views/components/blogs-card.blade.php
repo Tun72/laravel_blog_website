@@ -1,4 +1,5 @@
 @forelse ($blogs as $blog)
+{{-- {{ dd($blog->category->slug)}} --}}
 <div class="col-md-4 mb-4 ">
     <div class="card blogs p-3">
         <img src="{{ $blog->photo}}"
@@ -12,7 +13,7 @@
             </p>
             <div class="tags my-3">
                 <span class="badge btn-success"><a
-                        href="/?category={{ $blog->category->slug }} {{ request('search') ? "&search=" . request("search") : "" }} {{ request('author') ? "&author=" . request("author") : "" }}" class="text-white">{{ $blog->category->name }} </a></span>
+                        href="/?category={{ $blog->category?->slug }} {{ request('search') ? "&search=" . request("search") : "" }} {{ request('author') ? "&author=" . request("author") : "" }}" class="text-white">{{ $blog->category?->name }} </a></span>
 
             </div>
             <p class="card-text text-white">

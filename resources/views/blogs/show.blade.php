@@ -60,7 +60,7 @@
                 <x-image :src="$src" />
                 <form action="/blogs/{{ $blog->slug }}/comments" method="POST" class="comment">
                     @csrf
-                    <textarea class="form-control" name="body" placeholder="Write a comment..." id="floatingTextarea2"></textarea>
+                    <textarea class="form-control" name="body" id="mycomment" id="floatingTextarea2">Write a comment...</textarea>
                     @error('body')
                         <p class="text-danger error-message">*{{ $message }}</p>
                     @enderror
@@ -83,17 +83,22 @@
 
                             <div class="comment-body">
                                 <div>
-                                    <p class="comment-content">{{ $comment->body }}</p>
+                                    <p class="comment-content">{!! $comment->body !!}</p>
                                 </div>
 
                                 <div class="comment-custom">
                                     <span><i class="far fa-heart"></i>
                                         <p>{{ 0 }}</p>
                                     </span>
-                                    @if ($comment->user->id === auth()->user()->id)
+                                    {{-- @if ($comment->user_id === auth()->user()->id) --}}
+                                    @if (auth()->user()->can('user-comment', $comment))
                                         <div class="config-comment">
+
+
                                             <a href="#" class="text-info edit-blog" key="{{ $i++ }}"
                                                 id="{{ $comment->id }}">Edit</a>
+
+
                                             <form action="/comments/{{ $comment->id }}/delete" method="POST">
                                                 @csrf
                                                 <button type="submit" class="text-danger">delete</button>

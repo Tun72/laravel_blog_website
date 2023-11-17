@@ -1,3 +1,5 @@
+
+
 body {
     background: linear-gradient(to right bottom, #00100f, #000807) !important;
 }
@@ -120,7 +122,6 @@ body {
     font-size: 12px;
     margin: 0;
 }
-<<<<<<< HEAD
 
 .comment-section {
     width: 750px;
@@ -272,5 +273,13 @@ body {
 .comment-detail:hover .config-comment {
     opacity: 1;
 }
-=======
->>>>>>> 803ec328b54f94f64d8a37324f419e6b7f51516c
+
+.modal-position {
+    position: absolute !important;
+    right: 10%;
+    top: 10%;
+}
+
+p {
+    color:  #fff !important;
+}

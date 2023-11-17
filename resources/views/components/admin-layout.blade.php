@@ -5,6 +5,8 @@
                 <ul class="list-group text-white">
                     <li class="list-group-item"><a href="/admin">Dashboard</a></li>
                     <li class="list-group-item"><a href="/blog/blog-create">Blog Create</a></li>
+                    <li class="list-group-item"><a href="/blog/categories">Categories</a></li>
+                    <li class="list-group-item"><a href="/users">Users</a></li>
                 </ul>
             </div>
             <div class="col-9">

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
@@ -28,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::define("blog-action", function (User $user, Blog $blog) {
             return $user->id === $blog->user_id;
+        });
+
+        Gate::define("user-comment", function (User $user, Comment $comment) {
+            return $user->id === $comment->user_id;
         });
     }
 }
